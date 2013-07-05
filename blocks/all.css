@@ -78,7 +78,7 @@ body {
   left: 0;
   z-index: 10;
   width: 25%;
-  height: 25%;
+  height: 180px;
   -webkit-box-shadow: 0 0 10px black;
   box-shadow: 0 0 10px black;
 }
