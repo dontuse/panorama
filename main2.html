@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="publish/style.css" />
     <script src="lib/iscroll.js"></script>
+      <style>
+          #map_canvas {
+              height: 280px;
+          }
+      </style>
   </head>
   <body onload="loaded()">
     <div id="map_canvas"></div>
@@ -54,10 +59,10 @@
     <script>
       function initialize() {
          // coordinates for the center of the map
-         var mapCenter = new google.maps.LatLng(56.790123,60.597545);
+         var mapCenter = new google.maps.LatLng(56.800220, 60.378944);
          var mapOptions = {
             center: mapCenter,
-            zoom: 17,
+            zoom: 11,
             mapTypeId: google.maps.MapTypeId.HYBRID,
             streetViewControl: false,
             panControl: false,
@@ -81,33 +86,55 @@
          };
 
          var marker_1 = new google.maps.Marker({
-            position: mapCenter,
+            position:  new google.maps.LatLng(56.776779,60.448331),
             map: map,
             title:"Точка 1"
          });
-         var positionNotreDame = new google.maps.LatLng(56.790300,60.598113);
+         var positionNotreDame = new google.maps.LatLng(56.787176, 60.422205);
          var marker_2 = new google.maps.Marker({
             position: positionNotreDame,
             map: map,
             title:"Точка 2"
          });
-         var positionLouvre = new google.maps.LatLng(56.790105,60.596547);
+
+         var positionLouvre = new google.maps.LatLng(56.796366, 60.393463);
          var marker_3 = new google.maps.Marker({
             position: positionLouvre,
             map: map,
             title:"Точка 3"
          });
 
+          var position4 = new google.maps.LatLng(56.800220, 60.378944);
+          var marker_4 = new google.maps.Marker({
+              position: position4 ,
+              map: map,
+              title:"Точка 4"
+          });
+
+          var position5 = new google.maps.LatLng(56.810136, 60.344969);
+          var marker_5 = new google.maps.Marker({
+              position: position5 ,
+              map: map,
+              title:"Точка 5"
+          });
+
+          var position6 = new google.maps.LatLng(56.832869, 60.322739);
+          var marker_6 = new google.maps.Marker({
+              position: position6 ,
+              map: map,
+              title:"Точка 6"
+          });
+
          google.maps.event.addListener(marker_1, 'click', function() {
-            document.getElementById("pano").className = 'pano pano_1';
+            document.getElementById("pano").className = 'pano pano_2-1';
             selectMarker(marker_1);
          });
          google.maps.event.addListener(marker_2, 'click', function() {
-            document.getElementById("pano").className = 'pano pano_2';
+            document.getElementById("pano").className = 'pano pano_2-2';
             selectMarker(marker_2);
          });
          google.maps.event.addListener(marker_3, 'click', function() {
-            document.getElementById("pano").className = 'pano pano_3';
+            document.getElementById("pano").className = 'pano pano_2-3';
             selectMarker(marker_3);
          });
 

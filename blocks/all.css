@@ -72,6 +72,31 @@ body {
 .pano_3 {
   background-image: url('../img/bg3.2.jpg');
 }
+
+/*---------------------------------*/
+
+.pano_2-1 {
+     background-image: url('../img2/bg1.2.jpg');
+ }
+.pano_2-2 {
+    background-image: url('../img2/bg2.jpg');
+}
+.pano_2-3 {
+    background-image: url('../img2/bg3.jpg');
+}
+
+.pano_2-4 {
+    background-image: url('../img2/bg1.jpg');
+}
+.pano_2-5 {
+    background-image: url('../img2/bg2.jpg');
+}
+.pano_2-6 {
+    background-image: url('../img2/bg3.jpg');
+}
+
+/*--------------------------------*/
+
 #map_canvas {
   position: absolute;
   bottom: 5%;
