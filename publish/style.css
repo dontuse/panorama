@@ -517,6 +517,7 @@ li {
 body {
   font-size: 12px;
   font-family: helvetica, arial, sans-serif;
+  overflow: hidden;
 }
 #wrapper {
   position: absolute;
@@ -596,13 +597,13 @@ body {
   background-image: url("../img2/bg3.jpg");
 }
 .pano_2-4 {
-  background-image: url("../img2/bg1.jpg");
+  background-image: url("../img2/bg4.jpg");
 }
 .pano_2-5 {
-  background-image: url("../img2/bg2.jpg");
+  background-image: url("../img2/bg5.jpg");
 }
 .pano_2-6 {
-  background-image: url("../img2/bg3.jpg");
+  background-image: url("../img2/bg6.jpg");
 }
 /*--------------------------------*/
 #map_canvas {
@@ -615,4 +616,49 @@ body {
   -webkit-box-shadow: 0 0 10px #000;
   -webkit-box-shadow: 0 0 10px #000;
   box-shadow: 0 0 10px #000;
+}
+/*---------------------*/
+.b-navigation {
+  position: absolute;
+  z-index: 11111;
+  top: 40%;
+  right: 0;
+  width: 340px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 20px;
+}
+.b-navigation__control {
+  background: url("../img/info-box-arrows.png") no-repeat 12px 37px rgba(0,0,0,0.6);
+  width: 41px;
+  height: 100%;
+  padding: 10px;
+  cursor: pointer;
+  position: absolute;
+  left: -41px;
+  top: 0;
+  -webkit-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+.b-navigation__a {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.b-navigation__a:hover {
+  text-decoration: none;
+}
+.b-navigation__a_active {
+  color: #ea7200;
+  font-weight: bold;
+}
+/*.b-navigation_state_hide*/
+.b-navigation_state_hide {
+  right: -340px;
+}
+.b-navigation_state_hide .b-navigation__control {
+  background: url("../img/info-box-arrows.png") no-repeat 9px -114px rgba(0,0,0,0.6);
 }
