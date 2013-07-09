@@ -118,13 +118,13 @@ body {
     top: 40%;
     right: 0;
     width: 340px;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.8);
     color: #ffffff;
     padding: 20px;
 }
 
 .b-navigation__control {
-    background: url("../img/info-box-arrows.png") no-repeat 12px 37px rgba(0, 0, 0, 0.6);
+    background: url("../img/info-box-arrows.png") no-repeat 12px 37px rgba(0, 0, 0, 0.9);
     width: 41px;
     height: 100%;
     padding: 10px;
@@ -160,5 +160,5 @@ body {
 }
 
 .b-navigation_state_hide .b-navigation__control {
-    background: url("../img/info-box-arrows.png") no-repeat 9px -114px rgba(0, 0, 0, 0.6);
+    background: url("../img/info-box-arrows.png") no-repeat 9px -114px rgba(0, 0, 0, 0.9);
 }
