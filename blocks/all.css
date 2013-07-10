@@ -17,6 +17,10 @@ body {
 
 }
 
+html {
+    overflow: hidden;
+}
+
 #wrapper {
   position: absolute;
   z-index: 1;
