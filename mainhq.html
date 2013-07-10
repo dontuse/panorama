@@ -1,147 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Panorama - Московская</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" href="publish/style.css" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="publish/style.css"/>
+    <style>
+        #map_canvas {
+            bottom: 20px;
+            width: 378px;
+            height: 168px;
+            background: url("img/map.png") no-repeat #ffffff;
+        }
+    </style>
     <script src="lib/iscroll.js"></script>
     <script src="lib/jquery/jquery.min.js"></script>
-  </head>
-  <body onload="loaded()">
-    <div id="map_canvas"></div>
-    <div id="wrapper">
-      <div id="scroller">
+</head>
+<body>
+<div class="map-canvas" id="map_canvas">
+    <span style="bottom: 111px ; left: 319px;" data-map="pano_2-hq"
+          class="map-canvas__point"></span>
+    <span style="bottom: 53px ; left: 216px;"  data-map="pano_1-hq"  class="map-canvas__point map-canvas__point_active"></span>
+    <span style="bottom: 46px ; left: 32px;" data-map="pano_3-hq" class="map-canvas__point"></span>
+</div>
+<div id="wrapper">
+    <div id="scroller">
         <div class="pano pano_1-hq" id="pano">
         </div>
-      </div>
     </div>
-    <div class="b-navigation b-navigation_state_hide" >
+</div>
+<div class="b-navigation b-navigation_state_hide">
 
-        <div class="b-navigation__control"></div>
-        <a class="b-navigation__a b-navigation__a_active" >Развязка ул. Московская-Объездная</a>
-        <a class="b-navigation__a" style="" href="main2hq.html" >Cтроющийся сектор ЕКАД</a>
-    </div>
-    <script>
-      var myScroll;
-      var posX = -60000;
-      var linearEasing = { style: 'linear', fn: function (k) { return k; } };
-
-      function loaded () {
-        myScroll = new IScroll('#wrapper', {
-          // eventPassthrough: true,
-          scrollX: true,
-          scrollY: false,
-          bounce: false,
-          startX: posX
-        });
-        initialize();
-
-        // scroll from side to side not leaving left and right borders
-        function scrollPanorama() {
-          var stepX = 0;
-          var curPosX = myScroll.getComputedPosition().x;
-          if (curPosX === posX) {
-            if (curPosX > -30000){
-              stepX = -10000;
-            } else if (curPosX < -90000) {
-              stepX = 10000;
-            } else {
-              stepX = -10000;
-            }
-            myScroll.scrollBy( stepX, 0, 100000, linearEasing);
-          }
-          posX = curPosX;
-          setTimeout(scrollPanorama, 5000);
-        };
-        scrollPanorama();
-      }
-    </script>
-    <script src="http://maps.google.com/maps/api/js?sensor=false&language=ru"></script>
-    <script>
-      function initialize() {
-         // coordinates for the center of the map
-         var mapCenter = new google.maps.LatLng(56.790123,60.597545);
-         var mapOptions = {
-            center: mapCenter,
-            zoom: 17,
-            mapTypeId: google.maps.MapTypeId.HYBRID,
-            streetViewControl: false,
-            panControl: false,
-            zoomControl: false,
-            mapTypeControl: false
-         };
-
-         map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-
-         panoramaOptions = {
-            addressControl: true,
-            addressControlOptions: {
-               style: {backgroundColor: 'grey', color: 'yellow'}
-            },
-            position: mapCenter,
-            pov: {
-               heading: 140,
-               pitch: +10,
-               zoom: 1
-            }
-         };
-
-         var marker_1 = new google.maps.Marker({
-            position: mapCenter,
-            map: map,
-            title:"Точка 1"
-         });
-         var positionNotreDame = new google.maps.LatLng(56.790300,60.598113);
-         var marker_2 = new google.maps.Marker({
-            position: positionNotreDame,
-            map: map,
-            title:"Точка 2"
-         });
-         var positionLouvre = new google.maps.LatLng(56.790105,60.596547);
-         var marker_3 = new google.maps.Marker({
-            position: positionLouvre,
-            map: map,
-            title:"Точка 3"
-         });
-
-         google.maps.event.addListener(marker_1, 'click', function() {
-            document.getElementById("pano").className = 'pano pano_1-hq';
-            selectMarker(marker_1);
-         });
-         google.maps.event.addListener(marker_2, 'click', function() {
-            document.getElementById("pano").className = 'pano pano_2-hq';
-            selectMarker(marker_2);
-         });
-         google.maps.event.addListener(marker_3, 'click', function() {
-            document.getElementById("pano").className = 'pano pano_3-hq';
-            selectMarker(marker_3);
-         });
-
-         selectMarker(marker_1);
-
-         function selectMarker(mrkr) {
-            marker_1.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
-            marker_2.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
-            marker_3.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
-
-            mrkr.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
-          }
-      }
-
-      $(function(){
-          $block = $('.b-navigation');
-          $control = $('.b-navigation__control');
-
-          $control.click(function(e){
-              if($block.hasClass('b-navigation_state_hide')) {
-                  $block.animate({'right': "-0px"},300).removeClass('b-navigation_state_hide');
-              } else {
-                  $block.animate({'right': "-340px"},300).addClass('b-navigation_state_hide');
-              }
-          });
-
-      });
-    </script>
-  </body>
+    <div class="b-navigation__control"></div>
+    <a class="b-navigation__a b-navigation__a_active">Развязка ул. Московская-Объездная</a>
+    <a class="b-navigation__a" style="" href="main2hq.html">Cтроющийся сектор ЕКАД</a>
+</div>
+<script src="js.js"></script>
+</body>
 </html>
