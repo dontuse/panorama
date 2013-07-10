@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Panorama - Московская</title>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="publish/style.css"/>
+    <script src="lib/iscroll.js"></script>
+    <script src="lib/jquery/jquery.min.js"></script>
+
+    <style>
+        .test {
+
+        }
+        .test div {
+            background: #0d3349;
+            height: 70px;
+            width: 500px;
+            margin-bottom: 10px;
+            color:white;
+            font-weight: bold;
+        }
+
+        #block1 {
+            background: #ddd;
+            color: #fff;
+            border-radius: 35px;
+            float: left;
+            padding: 50px;
+            position: absolute;
+            top: 0;
+            left: 400px;
+        }
+
+        #block1.touched {
+            background: #666
+        }
+        body {
+            background: #b3d4fc;
+            position: relative;
+        }
+    </style>
+
+    <script>
+        $(function(){
+            $('#jq-click').on('click', function(e){
+                alert('$ click')
+            });
+
+            $('#jq-touch').on('touchstart', function(e) {
+                alert('$ touchstart');
+            });
+
+            $('#jq-touch-pr').on('touchmove', function(e) {
+                alert('$ move')
+            });
+
+            $('#jq-touch-s').on('touchstop', function(e) {
+                alert('$ move')
+            });
+
+
+
+            var block1 = $('#block1');
+            alert(block1.length);
+            block1.on('touchstart', function(event) {
+                event.preventDefault();
+                block1[0].className = 'touched';
+                block1[0].innerHTML = 'touched';
+            });
+
+            block1.on('touchmove', function(event) {
+                var x = event.originalEvent.touches[0].pageX;
+                var y = event.originalEvent.touches[0].pageY;
+                block1[0].style.left = x - 100;
+                block1[0].style.top = y - 50;
+                block1[0].innerHTML = 'touchmove' + x + '=' + y;
+            });
+
+            block1.on('touchend', function(event) {
+                event.preventDefault();
+                block1[0].className = '';
+                block1[0].innerHTML = 'dropped';
+            });
+
+            function updateOrientation() {
+                event.preventDefault();
+                var orientation = window.orientation;
+                switch(orientation) {
+                    case 90: case -90:
+                    orientation = 'landscape';
+                    break;
+                    default:
+                        orientation = 'portrait';
+                }
+                var h1 = document.getElementById('h1');
+                h1.innerHTML = 'Touch demo ' + orientation;
+            }
+
+            var body = document.getElementById('body');
+            window.addEventListener('orientationchange', updateOrientation, false);
+        });
+    </script>
+</head>
+
+<body>
+<div style="background: orange; padding:  60px;">
+    <div><a href="mainhq.html">h -1080</a></div>
+    <div><a href="main.html">h -900</a></div>
+</div>
+<div class="test" style="background: gainsboro; font-size: 14px;">
+    <div id="jq-click">$ click</div>
+    <div id="jq-touch">$ touchstart</div>
+    <div  id="jq-touch-pr">$ touch progress</div>
+    <div id="jq-touch-s">$ touch stop</div>
+</div>
+
+<div>
+    <h1 id="h1">Touch demo</h1>
+
+    <div id="block1">block1</div>
+</div>
+
+
+</body>
+</html>
