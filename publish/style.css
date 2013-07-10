@@ -633,11 +633,21 @@ html {
   bottom: 5%;
   left: 0;
   z-index: 10;
-  width: 25%;
+  width: 500px;
   height: 180px;
   -webkit-box-shadow: 0 0 10px #000;
   -webkit-box-shadow: 0 0 10px #000;
   box-shadow: 0 0 10px #000;
+}
+.map-canvas__point {
+  position: absolute;
+  cursor: pointer;
+  background: url("../img/map-icons.png") no-repeat;
+  width: 22px;
+  height: 36px;
+}
+.map-canvas__point_active {
+  background: url("../img/map-icons.png") 0 -46px no-repeat;
 }
 /*---------------------*/
 .b-navigation {
