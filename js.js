@@ -56,8 +56,10 @@ $(function () {
     $control.click(function (e) {
         if ($block.hasClass('b-navigation_state_hide')) {
             $block.animate({'right': "-0px"}, 300).removeClass('b-navigation_state_hide');
+            $control.find('span').hide();
         } else {
             $block.animate({'right': "-340px"}, 300).addClass('b-navigation_state_hide');
+            $control.find('span').show();
         }
     });
 
